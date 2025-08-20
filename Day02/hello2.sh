@@ -2,8 +2,13 @@
 
 # second day of shell scripting
 
-<< comment in this block means more than one line 
+<< comment 
+comment for 
+ more than one line 
 comment
 
 
+name="jetha"
 
+
+echo "Name is $name"
