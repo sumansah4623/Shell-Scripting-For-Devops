@@ -11,4 +11,10 @@ comment
 name="jetha"
 
 
-echo "Name is $name"
+echo "Name is $name, and date is $(date)"
+
+echo "Enter the name :"
+
+read username
+
+echo "You entered $username"
