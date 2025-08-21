@@ -9,8 +9,8 @@ task
 
 # function for clone github project to your local system
 code_clone() {
-	echo "Cloning the Django app..."
-	git clone https://github.com/LondheShubham153/django-notes-app.git
+        echo "Cloning the Django app..."
+        git clone https://github.com/LondheShubham153/django-notes-app.git
 
 }
 
@@ -18,16 +18,16 @@ code_clone() {
 
 # function for installation of required librery
 install_requirements() {
-	echo "Installing dependencies"
-	sudo apt-get install docker.io nginx -y
-
+        echo "Installing dependencies"
+        sudo apt-get install docker.io nginx -y
 }
+
 
 
 # function for required restart
 required_restarts() {
-	sudo systemctl enable docker
-	sudo systemctl enable nginx
+        sudo systemctl enable docker
+        sudo systemctl enable nginx
 }
 
 
@@ -39,8 +39,15 @@ deploy() {
 
 echo "***************DEPLOYMENT STARTED*******************"
 
-code_clone
-install_requirements	
+if ! code_clone; then
+        echo "the code directory  already exists"
+        cd django-notes-app
+fi
+
+if ! install_requirements; then
+        echo "Installation failed"
+        exit 1
+fi
 required_restarts
 deploy
 
